@@ -13,6 +13,9 @@ const StyledLogo = styled.div`
   font-size: ${({ size }) => (size ? size : "1.75rem")};
   font-weight: 900;
   color: ${({ theme, color }) => theme.colors[color] || color };
+  line-height: 1;
+  border-bottom: 3px solid black;
+  padding-bottom: .5rem;
 
   /* Disable effects when sidebar is open */
   filter: none !important;
@@ -21,9 +24,7 @@ const StyledLogo = styled.div`
 `
 
 const Logo = ({ size, color }) => (
-  <StyledLogo color={color} size={size}>
-    {siteShortTitle}
-  </StyledLogo>
+  <StyledLogo color={color} size={size} dangerouslySetInnerHTML={{__html:  `${siteShortTitle}`}} />
 )
 
 Logo.propTypes = {

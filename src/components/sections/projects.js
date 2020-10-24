@@ -121,11 +121,11 @@ const StyledProject = styled(motion.div)`
     justify-content: space-between;
     flex-shrink: 1;
     max-width: 62.5rem;
-    margin-bottom: 10rem;
+    margin-bottom: 2rem;
     padding-right: 0;
     /* Positioning of image and details should vary */
     flex-direction: ${({ position }) =>
-      position % 2 !== 0 ? "row" : "row-reverse"};
+    position % 2 !== 0 ? "row" : "row-reverse"};
   }
   .details {
     width: 100%;
@@ -148,6 +148,9 @@ const StyledProject = styled(motion.div)`
       font-size: 1.375rem;
       line-height: 1.625rem;
       font-weight: 700;
+    }
+    .topic {
+      margin: 1rem 0;
     }
     .tags {
       display: flex;
@@ -195,6 +198,13 @@ const StyledProject = styled(motion.div)`
     }
   }
 `
+
+const StyledBody = styled.div`
+margin-bottom: 10rem;
+background: #f2f2f2;
+padding: 2rem;
+border-radius: ${({ theme }) => theme.borderRadius};
+`;
 
 const Projects = ({ content }) => {
   const sectionDetails = content[0].node
@@ -272,63 +282,66 @@ const Projects = ({ content }) => {
                 partialVisibility={true}
                 minTopValue={100}
               >
-                <StyledProject
-                  position={frontmatter.position}
-                  variants={pVariants}
-                  animate={
-                    onScreen[frontmatter.position] ? "visible" : "hidden"
-                  }
-                >
-                  <div className="details">
-                    <div className="category">
-                      {frontmatter.emoji} {frontmatter.category}
-                    </div>
-                    <div className="title">{frontmatter.title}</div>
-                    <MDXRenderer>{body}</MDXRenderer>
-                    <div className="tags">
-                      {frontmatter.tags.map(tag => (
-                        <Underlining
-                          key={tag}
-                          color="secondary"
-                          hoverColor="secondary"
-                        >
-                          {tag}
-                        </Underlining>
-                      ))}
-                    </div>
-                    <div className="links">
-                      {frontmatter.github && (
-                        <a
-                          href={frontmatter.github}
-                          target="_blank"
-                          rel="nofollow noopener noreferrer"
-                          aria-label="External Link"
-                        >
-                          <Icon name="github" color="#888888" />
-                        </a>
-                      )}
-                      {frontmatter.external && (
-                        <a
-                          href={frontmatter.external}
-                          target="_blank"
-                          rel="nofollow noopener noreferrer"
-                          aria-label="External Link"
-                        >
-                          <Icon name="external" color="#888888" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  {/* If image in viewport changes, update state accordingly */}
-                  <VisibilitySensor
-                    onChange={() => setVisibleProject(frontmatter.position)}
+                <>
+                  <StyledProject
+                    position={frontmatter.position}
+                    variants={pVariants}
+                    animate={
+                      onScreen[frontmatter.position] ? "visible" : "hidden"
+                    }
                   >
-                    <Img
-                      className="screenshot"
-                      fluid={frontmatter.screenshot.childImageSharp.fluid}
-                    />
-                  </VisibilitySensor>
-                </StyledProject>
+                    <div className="details">
+                      <div className="category">
+                        {frontmatter.emoji} {frontmatter.category}
+                      </div>
+                      <div className="title">{frontmatter.title}</div>
+                      <div className="topic">{frontmatter.topic}</div>
+                      <div className="tags">
+                        {frontmatter.tags.map(tag => (
+                          <Underlining
+                            key={tag}
+                            color="secondary"
+                            hoverColor="secondary"
+                          >
+                            {tag}
+                          </Underlining>
+                        ))}
+                      </div>
+                      <div className="links">
+                        {frontmatter.github && (
+                          <a
+                            href={frontmatter.github}
+                            target="_blank"
+                            rel="nofollow noopener noreferrer"
+                            aria-label="External Link"
+                          >
+                            <Icon name="github" color="#888888" />
+                          </a>
+                        )}
+                        {frontmatter.external && (
+                          <a
+                            href={frontmatter.external}
+                            target="_blank"
+                            rel="nofollow noopener noreferrer"
+                            aria-label="External Link"
+                          >
+                            <Icon name="external" color="#888888" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                    {/* If image in viewport changes, update state accordingly */}
+                    <VisibilitySensor
+                      onChange={() => setVisibleProject(frontmatter.position)}
+                    >
+                      <Img
+                        className="screenshot"
+                        fluid={frontmatter.screenshot.childImageSharp.fluid}
+                      />
+                    </VisibilitySensor>
+                  </StyledProject>
+                  <StyledBody><MDXRenderer>{body}</MDXRenderer></StyledBody>
+                </>
               </VisibilitySensor>
             )
           })}
@@ -336,19 +349,19 @@ const Projects = ({ content }) => {
       </StyledContentWrapper>
       {sectionDetails.frontmatter.buttonVisible === "true" && (
         <motion.a
-        ref={bRef}
-        variants={bVariants}
-        animate={bOnScreen ? "visible" : "hidden"}
-        className="cta-btn"
-        href={sectionDetails.frontmatter.buttonUrl}
-        target="_blank"
-        rel="nofollow noopener noreferrer"
-        aria-label="External Link"
-      >
-        <Button type="button" textAlign="center" color="primary" center>
-          {sectionDetails.frontmatter.buttonText}
-        </Button>
-      </motion.a>
+          ref={bRef}
+          variants={bVariants}
+          animate={bOnScreen ? "visible" : "hidden"}
+          className="cta-btn"
+          href={sectionDetails.frontmatter.buttonUrl}
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          aria-label="External Link"
+        >
+          <Button type="button" textAlign="center" color="primary" center>
+            {sectionDetails.frontmatter.buttonText}
+          </Button>
+        </motion.a>
       )}
     </StyledSection>
   )

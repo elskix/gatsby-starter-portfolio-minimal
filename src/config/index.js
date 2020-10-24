@@ -1,8 +1,8 @@
 module.exports = {
 
     author: "@konstantinmuenster",
-    siteTitle: "Gatsby Starter Portfolio Minimal",
-    siteShortTitle: "Gatsby", // Used as logo text in header, footer, and splash screen
+    siteTitle: "study portfolio Elske",
+    siteShortTitle: "Elske<br />Ruge", // Used as logo text in header, footer, and splash screen
     siteDescription: "A modern one-page portfolio with a clean yet expressive design.",
     siteUrl: "https://gatsby-starter-portfolio-minimal.netlify.app/",
     siteLanguage: "en_US",
@@ -19,35 +19,23 @@ module.exports = {
     // Medium, GitHub, LinkedIn, XING, Behance
     socialMedia: [
         {
-            name: "Linkedin",
-            url: "https://www.linkedin.com/in/konstantin-muenster/"
+            name: "LinkedIn",
+            url: "https://www.linkedin.com/in/elske-ruge-972522192/"
         },
         {
-            name: "Medium",
-            url: "https://medium.com/@konstantin.muenster"
-        },
-        {
-            name: "Github",
-            url: "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal"
-        },
-        {
-            name: "Behance",
-            url: "https://www.behance.net/konstanmnster"
+            name: "Xing",
+            url: "https://www.xing.com/profile/Elske_Ruge/cv"
         },
     ],
   
     navLinks: {
         menu: [
             {
-                name: "Articles",
-                url: "/#articles",
-            },
-            {
                 name: "About Me",
                 url: "/#about",
             },
             {
-                name: "Features",
+                name: "Academic Projects",
                 url: "/#projects",
             },
         ],
