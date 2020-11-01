@@ -1,6 +1,5 @@
-# Gatsby Starter Portfolio Minimal
-#### A modern one-page portfolio with a clean yet expressive design.
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Netlify Status](https://api.netlify.com/api/v1/badges/16b36180-0897-40c5-925c-fefa0232555c/deploy-status)](https://app.netlify.com/sites/gatsby-starter-portfolio-minimal/deploys)
+# Portfolio Elske
+#### Fork from gatsy-starter-portfolio-minimal
 
 Portfolio Minimal is a Gatsby Starter. Starters are boilerplate projects that can be used to set up new sites effortless. With this starter, you can create a modern one-page portfolio within minutes. 
 
